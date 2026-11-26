@@ -59,42 +59,7 @@ Proyek ini menggunakan beberapa tahapan:
 8. Memeriksa duplikasi dan kesesuaian hasil penggabungan.
 9. Menyimpan hasil dan dokumentasi proyek.
 
-## 6. Struktur Folder Proyek
-
-```text
-UTS-DAM-Pariwisata-NTB/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── notebooks/
-│   └── UTS_Data_Acquisition_Pariwisata_NTB.ipynb
-│
-├── data/
-│   ├── raw/
-│   │   ├── dataset_kunjungan_wisatawan_ntb_asli.xlsx
-│   │   ├── api_cuaca_ntb_raw.json
-│   │   └── hasil_scraping_ntb_raw.csv
-│   │
-│   └── processed/
-│       └── dataset_gabungan_pariwisata_ntb.csv
-│
-├── metadata/
-│   ├── provenance.csv
-│   ├── md5_checksum.txt
-│   └── data_ethics_checklist.md
-│
-├── src/
-│   ├── acquisition_api.py
-│   ├── web_scraping.py
-│   └── data_processing.py
-│
-└── docs/
-    └── laporan_uts.md
-```
-
-## 7. Tools dan Teknologi
+## 6. Tools dan Teknologi
 
 | No. | Tools | Kegunaan |
 |---|---|---|
@@ -106,7 +71,7 @@ UTS-DAM-Pariwisata-NTB/
 | 6 | OpenPyXL | Membaca file Excel |
 | 7 | GitHub | Penyimpanan dan dokumentasi proyek |
 
-## 8. Hasil yang Diharapkan
+## 7. Hasil yang Diharapkan
 
 Hasil akhir proyek ini meliputi:
 
@@ -118,7 +83,7 @@ Hasil akhir proyek ini meliputi:
 - Dokumentasi provenance dan checksum MD5.
 - Checklist etika akuisisi data.
 
-## 9. Etika dan Penggunaan Data
+## 8. Etika dan Penggunaan Data
 
 Pengumpulan data dilakukan dengan memperhatikan ketentuan berikut:
 
@@ -130,7 +95,7 @@ Pengumpulan data dilakukan dengan memperhatikan ketentuan berikut:
 - Tidak mengambil data pribadi yang tidak diperlukan.
 - Tidak menyimpan API key atau token rahasia di repository.
 
-## 10. Kesimpulan
+## 9. Kesimpulan
 
 Proyek ini diharapkan dapat memberikan pemahaman mengenai
 proses Data Acquisition & Management melalui pengumpulan data

@@ -1,0 +1,4 @@
+File: data/raw/dataset_kunjungan_wisatawan_ntb_asli.xlsx
+MD5: f17c3f11b70aad5bac001c90e0353305
+Ukuran: 16796 byte
+Catatan: hash dihitung dari file Excel asli; file mentah tidak diubah.

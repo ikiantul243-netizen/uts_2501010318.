@@ -187,11 +187,11 @@ readme_content = f"""# UTS Data Acquisition & Management — Pariwisata NTB
 
 | Atribut | Keterangan |
 | :--- | :--- |
-| **Nama Mahasiswa** | {NAMA_MAHASISWA} |
+| **Nama Mahasiswa** | {Mikael Gunawan Antul} |
 | **NIM** | `{NIM}` |
-| **Program Studi / Kelas** | {PRODI_KELAS} |
+| **Program Studi / Kelas** | {informatika/F} |
 | **Mata Kuliah** | Data Acquisition and Management |
-| **Email Kampus** | `{CAMPUS_EMAIL}` |
+| **Email Kampus** | `{mikiantul@gmail.com}` |
 | **Repository GitHub** | [github.com/ikantul243-netizen/uts_2501010318](https://github.com/ikantul243-netizen/uts_2501010318) |
 
 ## Ringkasan Proyek & Sumber Akuisisi

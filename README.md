@@ -1,104 +1,52 @@
-
-# UTS DATA ACQUISITION & MANAGEMENT
+# UTS Data Acquisition & Management
 ## Analisis Data Pariwisata Nusa Tenggara Barat (NTB)
 
-## 1. Identitas Mahasiswa
-
-| Keterangan | Data Mahasiswa |
+### Identitas Mahasiswa
+| Keterangan | Data |
 |---|---|
-| Nama | Mikael Gunawan Antul |
-| NIM | 2501010318 |
+| Nama | Isi nama lengkap |
+| NIM | Isi NIM |
 | Kelas | F |
 | Program Studi | Informatika |
-| Mata Kuliah | Data Acquisition & Management |
 | Perguruan Tinggi | INSTIKI |
-| Tahun Akademik | 2026 |
+| Mata Kuliah | Data Acquisition & Management |
+| Tahun | 2026 |
 
-## 2. Deskripsi Proyek
+## Deskripsi
+Proyek ini mengakuisisi dan mengolah data kunjungan wisatawan Provinsi Nusa Tenggara Barat. Tiga metode yang dirancang adalah unduh dataset terbuka, API cuaca Open-Meteo, dan web scraping halaman katalog statis yang hanya dilakukan jika diizinkan robots.txt.
 
-Proyek ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS)
-mata kuliah Data Acquisition & Management.
+## Dataset utama
+- Nama: Jumlah Kunjungan Wisatawan berdasarkan Jenis Wisatawan
+- Sumber: [Satu Data NTB](https://data.ntbprov.go.id/dataset/9e270f88-a604-4640-a4f0-24c996122b92/show)
+- File asli: `data/raw/dataset_kunjungan_wisatawan_ntb_asli.xlsx`
+- Ukuran: 300 baris × 7 kolom (berdasarkan file yang diterima)
+- Lisensi: metadata portal menunjukkan **License Not Specified**; konfirmasi ke pengelola sebelum redistribusi.
 
-Topik yang dipilih adalah **Analisis Data Pariwisata Nusa Tenggara Barat (NTB)**.
-Proyek ini bertujuan mengumpulkan, mengolah, dan menggabungkan data
-kunjungan wisatawan dengan informasi pendukung melalui tiga metode
-akuisisi data, yaitu dataset terbuka, API, dan web scraping.
+## Metode
+1. Membaca dan memeriksa Excel dengan Pandas.
+2. Mengambil data cuaca harian Mataram tahun 2024 melalui Open-Meteo Historical Weather API. Data API harus diambil ketika notebook dijalankan.
+3. Memeriksa `robots.txt` sebelum scraping katalog Satu Data NTB. Jika robots tidak dapat diperiksa atau melarang target, scraping dihentikan.
+4. Merangkum cuaca per bulan dan menggabungkan dengan data kunjungan tahun 2024 memakai `validate='many_to_one'`.
 
-## 3. Tujuan Proyek
+## Struktur folder
+```text
+notebooks/   notebook utama
+data/raw/    sumber mentah tanpa perubahan
+data/processed/ data hasil pembersihan dan penggabungan
+metadata/    provenance, checksum, checklist etika
+src/         skrip akuisisi dan pengolahan
+docs/        laporan proyek
+```
 
-1. Mengumpulkan data kunjungan wisatawan di Provinsi NTB.
-2. Memahami proses akuisisi data dari berbagai sumber.
-3. Mengambil data tambahan menggunakan API.
-4. Melakukan web scraping pada halaman yang diizinkan.
-5. Membersihkan dan menggabungkan data menggunakan Python.
-6. Mendokumentasikan sumber, lisensi, dan proses pengambilan data.
+## Cara menjalankan
+1. Buka notebook `notebooks/UTS_Data_Acquisition_Pariwisata_NTB.ipynb` di Google Colab.
+2. Isi nama, NIM, dan email kampus pribadi pada sel identitas/User-Agent.
+3. Jalankan semua sel dari atas ke bawah.
+4. Pastikan API berhasil, status robots.txt tercatat, dan scraping hanya berjalan bila diizinkan.
+5. Periksa hasil di `data/raw`, `data/processed`, dan `metadata`.
 
-## 4. Sumber Data
+## Atribusi
+Data cuaca: [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api), data ditawarkan di bawah CC BY 4.0 dan memerlukan atribusi: [Open-Meteo](https://open-meteo.com/).
 
-| No. | Metode Akuisisi | Sumber | Keterangan |
-|---|---|---|---|
-| 1 | Dataset terbuka | Satu Data NTB | Data kunjungan wisatawan NTB |
-| 2 | API | Open-Meteo | Data cuaca wilayah NTB |
-| 3 | Web Scraping | Halaman statis yang diizinkan | Informasi pendukung pariwisata NTB |
-
-**Sumber dataset utama:**
-
-https://data.ntbprov.go.id/dataset/9e270f88-a604-4640-a4f0-24c996122b92/show
-
-## 5. Metode Pengerjaan
-
-Proyek ini menggunakan beberapa tahapan:
-
-1. Mengunduh dataset Excel dari portal Satu Data NTB.
-2. Memeriksa jumlah baris, kolom, dan tipe data.
-3. Mengambil data cuaca melalui API Open-Meteo.
-4. Memeriksa robots.txt sebelum melakukan web scraping.
-5. Mengambil informasi dari halaman web statis yang diizinkan.
-6. Membersihkan dan menormalisasi data.
-7. Menggabungkan minimal dua sumber data menggunakan Pandas.
-8. Memeriksa duplikasi dan kesesuaian hasil penggabungan.
-9. Menyimpan hasil dan dokumentasi proyek.
-
-## 6. Tools dan Teknologi
-
-| No. | Tools | Kegunaan |
-|---|---|---|
-| 1 | Python | Bahasa pemrograman |
-| 2 | Google Colab | Menjalankan notebook |
-| 3 | Pandas | Pengolahan data |
-| 4 | Requests | Mengakses API dan halaman web |
-| 5 | BeautifulSoup | Web scraping |
-| 6 | OpenPyXL | Membaca file Excel |
-| 7 | GitHub | Penyimpanan dan dokumentasi proyek |
-
-## 7. Hasil yang Diharapkan
-
-Hasil akhir proyek ini meliputi:
-
-- Dataset mentah kunjungan wisatawan NTB.
-- Dataset hasil pengambilan melalui API.
-- Dataset hasil web scraping yang diizinkan.
-- Dataset gabungan dari minimal dua sumber.
-- Notebook Python yang dapat dijalankan.
-- Dokumentasi provenance dan checksum MD5.
-- Checklist etika akuisisi data.
-
-## 8. Etika dan Penggunaan Data
-
-Pengumpulan data dilakukan dengan memperhatikan ketentuan berikut:
-
-- Menggunakan sumber data yang dapat diakses secara sah.
-- Memeriksa ketentuan lisensi dan penggunaan data.
-- Memeriksa robots.txt sebelum melakukan scraping.
-- Menggunakan User-Agent yang sesuai.
-- Menggunakan timeout dan jeda antar-request.
-- Tidak mengambil data pribadi yang tidak diperlukan.
-- Tidak menyimpan API key atau token rahasia di repository.
-
-## 9. Kesimpulan
-
-Proyek ini diharapkan dapat memberikan pemahaman mengenai
-proses Data Acquisition & Management melalui pengumpulan data
-dari berbagai sumber, pengolahan menggunakan Python, serta
-penggabungan data untuk mendukung analisis sektor pariwisata
-di Provinsi Nusa Tenggara Barat.
+## Status hasil
+File Excel asli dan hasil pembersihan lokal disertakan. File API, scraping, dan merge dibuat oleh notebook saat dijalankan; jangan menganggap akuisisi tersebut selesai sebelum sel notebook sukses dan file keluarannya tersedia.

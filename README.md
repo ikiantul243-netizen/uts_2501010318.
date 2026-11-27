@@ -188,7 +188,7 @@ readme_content = f"""# UTS Data Acquisition & Management — Pariwisata NTB
 | Atribut | Keterangan |
 | :--- | :--- |
 | **Nama Mahasiswa** | {Mikael Gunawan Antul} |
-| **NIM** | `{NIM}` |
+| **NIM** | `{2501010318}` |
 | **Program Studi / Kelas** | {informatika/F} |
 | **Mata Kuliah** | Data Acquisition and Management |
 | **Email Kampus** | `{mikiantul@gmail.com}` |

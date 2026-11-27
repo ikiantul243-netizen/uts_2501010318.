@@ -4,8 +4,8 @@
 ### Identitas Mahasiswa
 | Keterangan | Data |
 |---|---|
-| Nama | Isi nama lengkap |
-| NIM | Isi NIM |
+| Nama | Mikael Gunawan Antul |
+| NIM | 2501010318 |
 | Kelas | F |
 | Program Studi | Informatika |
 | Perguruan Tinggi | INSTIKI |

@@ -7,9 +7,7 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-# ==========================================
 # 1. IDENTITAS MAHASISWA & KONFIGURASI PROYEK
-# ==========================================
 NAMA_MAHASISWA = "Mikael Gunawan Antul"
 NIM = "2501010318"
 PRODI_KELAS = "Isi Program Studi / Kelas Anda"
@@ -26,10 +24,7 @@ for folder in [RAW_DIR, PROC_DIR, META_DIR]:
 HEADERS = {
     "User-Agent": f"StudentDataAcquisitionProject/1.0 ({NAMA_MAHASISWA} - {NIM}; contact: {CAMPUS_EMAIL})"
 }
-
-# ==========================================
 # 2. METODE 1: DATASET TERBUKA (EXCEL ASLI)
-# ==========================================
 raw_excel_path = os.path.join(RAW_DIR, "dataset_kunjungan_wisatawan_ntb_asli.xlsx")
 
 if not os.path.exists(raw_excel_path):
@@ -63,9 +58,7 @@ clean_wisatawan_csv = os.path.join(PROC_DIR, "dataset_kunjungan_wisatawan_ntb_cl
 df_wisatawan_clean.to_csv(clean_wisatawan_csv, index=False)
 print("[OK] Dataset utama dibersihkan:", df_wisatawan_clean.shape)
 
-# ==========================================
 # 3. METODE 2: OPEN-METEO HISTORICAL WEATHER API
-# ==========================================
 # Koordinat Kota Mataram (-8.5833, 116.1167) tahun 2024
 api_url = (
     "https://archive-api.open-meteo.com/v1/archive"
@@ -105,9 +98,7 @@ proc_api_path = os.path.join(PROC_DIR, "cuaca_mataram_2024_normalized.csv")
 df_weather_bulanan.to_csv(proc_api_path, index=False)
 print("[OK] Data API cuaca Mataram dinormalisasi:", df_weather_bulanan.shape)
 
-# ==========================================
 # 4. METODE 3: CEK ROBOTS.TXT & WEB SCRAPING
-# ==========================================
 target_scrape_url = "https://data.ntbprov.go.id/dataset/9e270f88-a604-4640-a4f0-24c996122b92/show"
 robots_url = "https://data.ntbprov.go.id/robots.txt"
 
@@ -159,9 +150,7 @@ else:
 proc_scrape_path = os.path.join(PROC_DIR, "hasil_scraping_metadata_ntb.csv")
 df_scrape.to_csv(proc_scrape_path, index=False)
 
-# ==========================================
 # 5. PENGGABUNGAN DATA (MERGE)
-# ==========================================
 df_merged = df_wisatawan_clean.copy()
 if "tahun" in df_merged.columns and "bulan" in df_merged.columns:
     df_merged = df_merged.merge(df_weather_bulanan, on=["tahun", "bulan"], how="left")
@@ -174,9 +163,7 @@ merged_path = os.path.join(PROC_DIR, "data_gabungan_pariwisata_ntb.csv")
 df_merged.to_csv(merged_path, index=False)
 print("[OK] Hasil merge tersimpan:", df_merged.shape)
 
-# ==========================================
 # 6. METADATA: PROVENANCE, ETHICS & MD5
-# ==========================================
 pd.DataFrame([
     {"berkas": "data/raw/dataset_kunjungan_wisatawan_ntb_asli.xlsx", "sumber": "Satu Data NTB", "metode": "Open Dataset Download", "keterangan": "300 baris, 7 kolom (utuh/tidak diubah)"},
     {"berkas": "data/raw/open_meteo_mataram_2024_raw.json", "sumber": "Open-Meteo Historical API", "metode": "REST API GET", "keterangan": "Cuaca harian Mataram tahun 2024"},
@@ -193,9 +180,7 @@ pd.DataFrame([
     {"aspek": "Keamanan Kredensial", "status": "Patuh", "catatan": "Tidak ada token, password, atau kredensial yang disimpan di repository."},
 ]).to_csv(os.path.join(META_DIR, "data_ethics_checklist.csv"), index=False)
 
-# ==========================================
 # 7. GENERATE README.md FORMAT TABEL
-# ==========================================
 readme_content = f"""# UTS Data Acquisition & Management — Pariwisata NTB
 
 ## Identitas Mahasiswa & Repository
